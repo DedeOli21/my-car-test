@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 const mockData = {
-  userName: "Carlos Silva",
+  userName: "José Moacir",
   saldoBancario: 12450.0,
   totalFretes: 8,
   gastoDiesel: 3820.5,
