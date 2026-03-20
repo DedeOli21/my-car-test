@@ -5,6 +5,7 @@ export const toAppError = (error: unknown) => {
     return {
       message: error.message,
       status: error.status,
+      data: error.data,
     };
   }
 

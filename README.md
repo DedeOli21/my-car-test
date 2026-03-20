@@ -60,6 +60,22 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## API configuration (Vite + Amplify)
+
+This app reads API base URL from `VITE_API_BASE_URL`.
+
+Examples:
+
+```sh
+VITE_API_BASE_URL=https://o15aa028j2.execute-api.us-east-2.amazonaws.com
+```
+
+For AWS Amplify:
+
+1. Go to Amplify app settings -> Environment variables.
+2. Set `VITE_API_BASE_URL` with your API Gateway URL.
+3. Redeploy the app so Vite picks the variable at build time.
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.

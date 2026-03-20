@@ -13,8 +13,18 @@ const defaultByStatus: Record<number, string> = {
 };
 
 export const getFriendlyErrorMessage = (error: ErrorLike) => {
+  const hasMessage = Boolean(error.message && error.message.trim());
+
+  if (error.status === 0 && hasMessage) {
+    return error.message as string;
+  }
+
+  if (error.status && hasMessage) {
+    return `${error.status} - ${error.message}`;
+  }
+
   if (error.status && defaultByStatus[error.status]) {
-    return defaultByStatus[error.status];
+    return `${error.status} - ${defaultByStatus[error.status]}`;
   }
 
   if (error.message && !/^Request failed/i.test(error.message)) {
