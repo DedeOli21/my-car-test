@@ -10,6 +10,7 @@ import Dashboard from "@/pages/Dashboard";
 import Abastecimento from "@/pages/Abastecimento";
 import Fretes from "@/pages/Fretes";
 import Financeiro from "@/pages/Financeiro";
+import Motoristas from "@/pages/Motoristas";
 import AuthPage from "@/pages/auth/AuthPage";
 import NotFound from "@/pages/NotFound";
 
