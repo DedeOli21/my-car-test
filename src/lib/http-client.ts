@@ -202,8 +202,11 @@ export const apiRequest = async <T>(
       throw new ApiError("Timeout: a API demorou para responder.", 0, null);
     }
 
+    const currentOrigin =
+      typeof window !== "undefined" ? window.location.origin : "unknown-origin";
+
     throw new ApiError(
-      "Falha de rede/CORS ao chamar a API. Verifique URL, CORS e conectividade.",
+      `Falha de rede/CORS ao chamar a API (${API_BASE_URL}) a partir de ${currentOrigin}.`,
       0,
       null
     );
