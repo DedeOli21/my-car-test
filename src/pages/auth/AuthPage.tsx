@@ -16,9 +16,15 @@ interface AuthPageProps {
   mode: "login" | "register";
 }
 
-const isDevEnvironment =
-  window.location.hostname === "localhost" ||
-  window.location.hostname.includes("lovable.app");
+const getIsDevEnvironment = () => {
+  const hostname = window.location.hostname;
+  return (
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname.endsWith(".lovable.app") ||
+    hostname.endsWith(".lovableproject.com")
+  );
+};
 
 const createMockJwt = (role: UserRole): string => {
   const header = btoa(JSON.stringify({ alg: "none", typ: "JWT" }));
