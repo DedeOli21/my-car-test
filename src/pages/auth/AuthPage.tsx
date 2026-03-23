@@ -39,6 +39,12 @@ const AuthPage = ({ mode }: AuthPageProps) => {
   const navigate = useNavigate();
   const { isAuthenticated, login } = useAuth();
 
+  const mockLogin = (mockRole: UserRole) => {
+    const token = createMockJwt(mockRole);
+    login({ accessToken: token, refreshToken: "mock-refresh", tokenType: "Bearer", expiresIn: 86400 });
+    navigate("/", { replace: true });
+  };
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
