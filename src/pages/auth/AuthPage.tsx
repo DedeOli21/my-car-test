@@ -16,9 +16,34 @@ interface AuthPageProps {
   mode: "login" | "register";
 }
 
+const isDevEnvironment =
+  window.location.hostname === "localhost" ||
+  window.location.hostname.includes("lovable.app");
+
+const createMockJwt = (role: UserRole): string => {
+  const header = btoa(JSON.stringify({ alg: "none", typ: "JWT" }));
+  const payload = btoa(
+    JSON.stringify({
+      sub: role === "DRIVER" ? "driver-001" : "admin-001",
+      email: role === "DRIVER" ? "jose.moacir@truck.com" : "admin@truck.com",
+      name: role === "DRIVER" ? "José Moacir" : "Administrador",
+      role,
+      exp: Math.floor(Date.now() / 1000) + 86400,
+      iat: Math.floor(Date.now() / 1000),
+    })
+  );
+  return `${header}.${payload}.mock`;
+};
+
 const AuthPage = ({ mode }: AuthPageProps) => {
   const navigate = useNavigate();
   const { isAuthenticated, login } = useAuth();
+
+  const mockLogin = (mockRole: UserRole) => {
+    const token = createMockJwt(mockRole);
+    login({ accessToken: token, refreshToken: "mock-refresh", tokenType: "Bearer", expiresIn: 86400 });
+    navigate("/", { replace: true });
+  };
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -163,6 +188,20 @@ const AuthPage = ({ mode }: AuthPageProps) => {
               </Link>
             </p>
           </form>
+
+          {isDevEnvironment && isLogin && (
+            <div className="mt-6 pt-4 border-t border-border space-y-2">
+              <p className="text-xs text-muted-foreground text-center">Acesso rápido (dev only)</p>
+              <div className="grid grid-cols-2 gap-2">
+                <Button variant="outline" size="sm" onClick={() => mockLogin("DRIVER")}>
+                  Entrar como DRIVER
+                </Button>
+                <Button variant="outline" size="sm" onClick={() => mockLogin("ADMIN")}>
+                  Entrar como ADMIN
+                </Button>
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
