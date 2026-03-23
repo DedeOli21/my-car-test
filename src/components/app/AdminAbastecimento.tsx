@@ -172,7 +172,7 @@ const AdminAbastecimento = () => {
           </Select>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Total Gasto */}
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center shrink-0">
