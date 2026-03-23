@@ -163,6 +163,20 @@ const AuthPage = ({ mode }: AuthPageProps) => {
               </Link>
             </p>
           </form>
+
+          {isDevEnvironment && isLogin && (
+            <div className="mt-6 pt-4 border-t border-border space-y-2">
+              <p className="text-xs text-muted-foreground text-center">Acesso rápido (dev only)</p>
+              <div className="grid grid-cols-2 gap-2">
+                <Button variant="outline" size="sm" onClick={() => mockLogin("DRIVER")}>
+                  Entrar como DRIVER
+                </Button>
+                <Button variant="outline" size="sm" onClick={() => mockLogin("ADMIN")}>
+                  Entrar como ADMIN
+                </Button>
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
