@@ -55,15 +55,12 @@ const AdminDashboard = () => {
   return (
     <div className="p-4 space-y-4 animate-fade-in">
       {/* Header */}
-      <div>
-        <p className="text-xs text-muted-foreground">Logado como Administrador</p>
-        <div className="flex items-center justify-between mt-1">
-          <h1 className="text-2xl font-bold text-foreground">Olá, {firstName}</h1>
-          <Badge className="bg-[hsl(var(--info))]/20 text-[hsl(var(--info))] border border-[hsl(var(--info))]/30 gap-1 cursor-pointer hover:bg-[hsl(var(--info))]/30 transition-colors">
-            <Users className="w-3 h-3" />
-            3 em rota
-          </Badge>
-        </div>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold text-foreground">Olá, {firstName}</h1>
+        <Badge className="bg-[hsl(var(--info))]/20 text-[hsl(var(--info))] border border-[hsl(var(--info))]/30 gap-1 cursor-pointer hover:bg-[hsl(var(--info))]/30 transition-colors">
+          <Users className="w-3 h-3" />
+          3 em rota
+        </Badge>
       </div>
 
       {/* Period filter */}
