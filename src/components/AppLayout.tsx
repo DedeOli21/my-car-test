@@ -1,13 +1,23 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { Home, Fuel, Truck, Landmark, LogOut } from "lucide-react";
+import { Home, Fuel, Truck, Landmark, LogOut, Users } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
+import type { UserRole } from "@/types/api";
+import type { LucideIcon } from "lucide-react";
 
-const tabs = [
-  { to: "/", icon: Home, label: "Início" },
-  { to: "/abastecimento", icon: Fuel, label: "Abastecimento" },
-  { to: "/fretes", icon: Truck, label: "Fretes" },
-  { to: "/financeiro", icon: Landmark, label: "Financeiro" },
+interface Tab {
+  to: string;
+  icon: LucideIcon;
+  label: string;
+  roles: UserRole[];
+}
+
+const allTabs: Tab[] = [
+  { to: "/", icon: Home, label: "Início", roles: ["DRIVER", "ADMIN"] },
+  { to: "/motoristas", icon: Users, label: "Motoristas", roles: ["ADMIN"] },
+  { to: "/abastecimento", icon: Fuel, label: "Abastecimento", roles: ["DRIVER", "ADMIN"] },
+  { to: "/fretes", icon: Truck, label: "Fretes", roles: ["DRIVER", "ADMIN"] },
+  { to: "/financeiro", icon: Landmark, label: "Financeiro", roles: ["ADMIN"] },
 ];
 
 const AppLayout = () => {
@@ -18,6 +28,8 @@ const AppLayout = () => {
     logout();
     navigate("/login", { replace: true });
   };
+
+  const tabs = allTabs.filter((tab) => !role || tab.roles.includes(role));
 
   return (
     <div className="min-h-screen bg-background flex flex-col max-w-[480px] mx-auto relative">
@@ -47,7 +59,7 @@ const AppLayout = () => {
               to={tab.to}
               end={tab.to === "/"}
               className={({ isActive }) =>
-                `flex flex-col items-center gap-0.5 py-2 px-3 rounded-lg transition-colors min-w-[64px] ${
+                `flex flex-col items-center gap-0.5 py-2 px-3 rounded-lg transition-colors min-w-[56px] ${
                   isActive
                     ? "text-primary"
                     : "text-muted-foreground hover:text-foreground"
@@ -55,7 +67,7 @@ const AppLayout = () => {
               }
             >
               <tab.icon className="w-5 h-5" strokeWidth={2} />
-              <span className="text-[11px] font-semibold">{tab.label}</span>
+              <span className="text-[10px] font-semibold">{tab.label}</span>
             </NavLink>
           ))}
         </div>
