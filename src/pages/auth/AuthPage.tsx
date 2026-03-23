@@ -16,6 +16,25 @@ interface AuthPageProps {
   mode: "login" | "register";
 }
 
+const isDevEnvironment =
+  window.location.hostname === "localhost" ||
+  window.location.hostname.includes("lovable.app");
+
+const createMockJwt = (role: UserRole): string => {
+  const header = btoa(JSON.stringify({ alg: "none", typ: "JWT" }));
+  const payload = btoa(
+    JSON.stringify({
+      sub: role === "DRIVER" ? "driver-001" : "admin-001",
+      email: role === "DRIVER" ? "jose.moacir@truck.com" : "admin@truck.com",
+      name: role === "DRIVER" ? "José Moacir" : "Administrador",
+      role,
+      exp: Math.floor(Date.now() / 1000) + 86400,
+      iat: Math.floor(Date.now() / 1000),
+    })
+  );
+  return `${header}.${payload}.mock`;
+};
+
 const AuthPage = ({ mode }: AuthPageProps) => {
   const navigate = useNavigate();
   const { isAuthenticated, login } = useAuth();
