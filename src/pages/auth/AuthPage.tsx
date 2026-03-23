@@ -195,7 +195,7 @@ const AuthPage = ({ mode }: AuthPageProps) => {
             </p>
           </form>
 
-          {isDevEnvironment && isLogin && (
+          {getIsDevEnvironment() && isLogin && (
             <div className="mt-6 pt-4 border-t border-border space-y-2">
               <p className="text-xs text-muted-foreground text-center">Acesso rápido (dev only)</p>
               <div className="grid grid-cols-2 gap-2">
