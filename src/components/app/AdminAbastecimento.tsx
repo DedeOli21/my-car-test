@@ -211,7 +211,7 @@ const AdminAbastecimento = () => {
       </Card>
 
       {/* ── Filters ── */}
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
         <Select value={filtroVeiculo} onValueChange={setFiltroVeiculo}>
           <SelectTrigger className="h-9 text-xs bg-secondary border-border">
             <SelectValue placeholder="Veículo" />
