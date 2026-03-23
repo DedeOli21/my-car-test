@@ -10,6 +10,7 @@ import Dashboard from "@/pages/Dashboard";
 import Abastecimento from "@/pages/Abastecimento";
 import Fretes from "@/pages/Fretes";
 import Financeiro from "@/pages/Financeiro";
+import Motoristas from "@/pages/Motoristas";
 import AuthPage from "@/pages/auth/AuthPage";
 import NotFound from "@/pages/NotFound";
 
@@ -38,6 +39,7 @@ const App = () => (
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/abastecimento" element={<Abastecimento />} />
                 <Route path="/fretes" element={<Fretes />} />
+                <Route path="/motoristas" element={<Motoristas />} />
                 <Route path="/financeiro" element={<Financeiro />} />
               </Route>
             </Route>
