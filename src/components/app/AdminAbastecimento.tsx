@@ -144,9 +144,9 @@ const AdminAbastecimento = () => {
   return (
     <div className="p-4 space-y-4 pb-24">
       {/* ── Header + action buttons ── */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-xl font-bold text-foreground">Despesas Operacionais</h1>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Button size="sm" variant="secondary" onClick={() => setShowExpenseModal(true)}>
             <Plus className="w-4 h-4 mr-1" /> Gasto Variável
           </Button>
@@ -172,7 +172,7 @@ const AdminAbastecimento = () => {
           </Select>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {/* Total Gasto */}
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center shrink-0">
@@ -211,7 +211,7 @@ const AdminAbastecimento = () => {
       </Card>
 
       {/* ── Filters ── */}
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
         <Select value={filtroVeiculo} onValueChange={setFiltroVeiculo}>
           <SelectTrigger className="h-9 text-xs bg-secondary border-border">
             <SelectValue placeholder="Veículo" />
