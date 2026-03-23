@@ -144,9 +144,9 @@ const AdminAbastecimento = () => {
   return (
     <div className="p-4 space-y-4 pb-24">
       {/* ── Header + action buttons ── */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-xl font-bold text-foreground">Despesas Operacionais</h1>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Button size="sm" variant="secondary" onClick={() => setShowExpenseModal(true)}>
             <Plus className="w-4 h-4 mr-1" /> Gasto Variável
           </Button>
